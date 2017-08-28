@@ -239,5 +239,5 @@ try:
 		input_file.close()
 		if inputted:code+='@'+inputted
 	outPut=interpret(code)
-	if str(outPut)!='None':print(str(outPut).replace('/n','\n'))
-except:print("Error!")
+	if str(outPut)!='None':rprint(str(outPut).replace('/n','\n'))
+except:rprint("Error!")
