@@ -207,20 +207,32 @@ def interpret(statement):
 
 #Behaves as an REPL
 if len(sys.argv)==1:
-	with RCLI() as cli:
-		#initialize rprint by enclosing current_buffer
-		rprint = rprint(cli.current_buffer)
+	try:
+		#RCLI based inetrpreter by @Robus Gauli
+		with RCLI() as cli:
+			#initialize rprint by enclosing current_buffer
+			rprint = rprint(cli.current_buffer)
 
+			while 1:
+
+				doc = cli.run()
+				if doc.text=="q":break;
+				try:
+					outPut=interpret(doc.text.rstrip(';;'))
+					if str(outPut)!='None':rprint('=> '+str(outPut).replace('/n','\n'))
+				except:rprint("=> Error!")
+				finally:
+					cli.current_buffer.inc()
+			exit()
+	except:
+		#Classical REPL
 		while 1:
-
-			doc = cli.run()
-			if doc.text=="q":break;
+			inString=input(">> ")
+			if inString=="q":break;
 			try:
-				outPut=interpret(doc.text.rstrip(';;'))
-				if str(outPut)!='None':rprint('=> '+str(outPut).replace('/n','\n'))
-			except:rprint("=> Error!")
-			finally:
-				cli.current_buffer.inc()
+				outPut=interpret(inString)
+				if str(outPut)!='None':print('=> '+str(outPut).replace('/n','\n'))
+			except:print("=> Error!")
 		exit()
 
 #Read code and inputs from file
