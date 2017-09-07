@@ -44,12 +44,20 @@ recursivaeval   = lambda x:interpret(x)
 stringin		= lambda x,y:y in x
 reverse			= lambda x:x[::-1]
 
+def upperAlphabet():
+	return'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+def lowerAlphabet():
+	return upperAlphabet().lower()
+
 def foreach(x,y):
 	for i in x:
 		if type(x)==type('f'):interpret(y.replace('}','"'+str(i)+'"'))
 		else:interpret(y.replace('}',' '+str(i)+' '))
 
 dictionary={
+	'(':{'func':upperAlphabet,'args':0},
+	')':{'func':lowerAlphabet,'args':0},	
 	'{':{'func':foreach,'args':2},
 	'_':{'func':reverse,'args':1},
 	'A':{'func':listify,'args':1},
@@ -185,6 +193,7 @@ def function_interpret(function_statement):
 		return interpret(compiled) 
 
 def interpret(statement):
+	#print("now: ", statement)
 	try:
 		if '@' in tokenizer(statement):
 			return function_interpret(statement)
