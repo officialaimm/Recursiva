@@ -1,6 +1,5 @@
 #-------------<TO_DO >--------------------------------------#
 # - Better way to tokenize nested string                    #
-# - Assign and store varibales!!!                           #
 # - Add filter, while, typecheck, sort etc                  #
 # - Proper input evaluation                                 #
 # - Maybe make a codepage?                                  #
@@ -10,6 +9,8 @@
 import sys
 
 sys.setrecursionlimit(1 << 30)
+
+values ={}
 
 #--------------<Built-in Functions>--------------
 
@@ -53,6 +54,11 @@ recursivaeval   = lambda x:interpret(x)
 stringin		= lambda x,y:y in x
 reverse			= lambda x:x[::-1]
 stringReplace   = lambda a,x,b:x.replace(str(a),str(b))
+mapper			= lambda a,b:[interpret(b+'@'+str(i)) for i in a]
+getValue		= lambda a:a in values.keys() and values[a] or 0
+
+def assign(a,b):
+	values[a]=b
 
 def upperAlphabet():
 	return'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -64,9 +70,6 @@ def foreach(x,y):
 	for i in x:
 		if type(x)==type('f'):interpret(y.replace('}','"'+str(i)+'"'))
 		else:interpret(y.replace('}',' '+str(i)+' '))
-
-def mapper(a,b):
-	return[interpret(b+'@'+str(i)) for i in a]
 
 dictionary={
 	'(':{'func':upperAlphabet,'args':0},
@@ -112,7 +115,9 @@ dictionary={
 	'B':{'func':ranger,'args':1},
 	'Q':{'func':splitter,'args':2},
 	'r':{'func':stringReplace,'args':3},
-	'm':{'func':mapper,'args':2}
+	'm':{'func':mapper,'args':2},
+	'`':{'func':assign,'args':2},
+	'\\':{'func':getValue,'args':1}
 }
 
 #--------------<Built-in Functions/>-------------
