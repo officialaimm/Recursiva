@@ -1,7 +1,6 @@
 #-------------<TO_DO >--------------------------------------#
 # - Better way to tokenize nested string                    #
-# - Add map, filter, etc.                                   #
-# - Add while, typecheck, etc                               #
+# - Add filter, while, typecheck, etc                       #
 # - Proper input evaluation                                 #
 # - Maybe make a codepage?                                  #
 # - Support 2 and more parameters in recursive function     #
@@ -65,6 +64,9 @@ def foreach(x,y):
 		if type(x)==type('f'):interpret(y.replace('}','"'+str(i)+'"'))
 		else:interpret(y.replace('}',' '+str(i)+' '))
 
+def mapper(a,b):
+	return[interpret(b+'@'+str(i)) for i in a]
+
 dictionary={
 	'(':{'func':upperAlphabet,'args':0},
 	')':{'func':lowerAlphabet,'args':0},	
@@ -108,7 +110,8 @@ dictionary={
 	'P':{'func':printer,'args':1},
 	'B':{'func':ranger,'args':1},
 	'Q':{'func':splitter,'args':2},
-	'r':{'func':stringReplace,'args':3}
+	'r':{'func':stringReplace,'args':3},
+	'm':{'func':mapper,'args':2}
 }
 
 #--------------<Built-in Functions/>-------------
