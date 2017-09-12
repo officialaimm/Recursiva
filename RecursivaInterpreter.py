@@ -1,6 +1,7 @@
 #-------------<TO_DO >--------------------------------------#
 # - Better way to tokenize nested string                    #
-# - Add filter, while, typecheck, etc                       #
+# - Assign and store varibales!!!                           #
+# - Add filter, while, typecheck, sort etc                  #
 # - Proper input evaluation                                 #
 # - Maybe make a codepage?                                  #
 # - Support 2 and more parameters in recursive function     #
