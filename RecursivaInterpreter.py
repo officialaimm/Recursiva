@@ -52,7 +52,7 @@ pythonexec		= lambda x:exec(x)
 recursivaeval   = lambda x:interpret(x) 
 stringin		= lambda x,y:y in x
 reverse			= lambda x:x[::-1]
-stringReplace   = lambda a,x,b:x.replace(a,b)
+stringReplace   = lambda a,x,b:x.replace(str(a),str(b))
 
 def upperAlphabet():
 	return'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
