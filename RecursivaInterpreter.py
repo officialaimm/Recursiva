@@ -11,6 +11,8 @@ import sys
 sys.setrecursionlimit(1 << 30)
 
 values ={}
+for i in range(100):
+	values[i]=0
 
 #--------------<Built-in Functions>--------------
 
@@ -71,6 +73,9 @@ def foreach(x,y):
 		if type(x)==type('f'):interpret(y.replace('}','"'+str(i)+'"'))
 		else:interpret(y.replace('}',' '+str(i)+' '))
 
+def whiler(x,y):
+	while(interpret(x)):interpret(y)
+
 dictionary={
 	'(':{'func':upperAlphabet,'args':0},
 	')':{'func':lowerAlphabet,'args':0},	
@@ -117,7 +122,8 @@ dictionary={
 	'r':{'func':stringReplace,'args':3},
 	'm':{'func':mapper,'args':2},
 	'`':{'func':assign,'args':2},
-	'\\':{'func':getValue,'args':1}
+	'?':{'func':getValue,'args':1},
+	'w':{'func':whiler,'args':2}
 }
 
 #--------------<Built-in Functions/>-------------
