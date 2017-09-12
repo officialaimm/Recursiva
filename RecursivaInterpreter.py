@@ -1,7 +1,7 @@
 #-------------<TO_DO >--------------------------------------#
 # - Better way to tokenize nested string                    #
 # - Add map, filter, etc.                                   #
-# - Add while, typecheck, str-replace,etc                   #
+# - Add while, typecheck, etc                               #
 # - Proper input evaluation                                 #
 # - Maybe make a codepage?                                  #
 # - Support 2 and more parameters in recursive function     #
@@ -52,12 +52,13 @@ pythonexec		= lambda x:exec(x)
 recursivaeval   = lambda x:interpret(x) 
 stringin		= lambda x,y:y in x
 reverse			= lambda x:x[::-1]
+stringReplace   = lambda a,x,b:x.replace(a,b)
 
 def upperAlphabet():
 	return'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 def lowerAlphabet():
-	return upperAlphabet().lower()
+	return'abcdefghijklmnopqrstuvwxyz'
 
 def foreach(x,y):
 	for i in x:
@@ -106,7 +107,8 @@ dictionary={
 	'|':{'func':orer,'args':2},
 	'P':{'func':printer,'args':1},
 	'B':{'func':ranger,'args':1},
-	'Q':{'func':splitter,'args':2}
+	'Q':{'func':splitter,'args':2},
+	'r':{'func':stringReplace,'args':3}
 }
 
 #--------------<Built-in Functions/>-------------
