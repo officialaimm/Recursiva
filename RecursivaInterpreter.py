@@ -1,10 +1,11 @@
-#-------------<TO_DO >--------------------------------------#
-# - Better way to tokenize nested string                    #
-# - Add filter, while, typecheck, sort etc                  #
-# - Proper input evaluation                                 #
-# - Maybe make a codepage?                                  #
-# - Support 2 and more parameters in recursive function     #
-#-------------</TO_DO>--------------------------------------#
+#-------------<TO_DO >--------------------------------------------#
+# - Better way to tokenize nested string                          #
+# - Add filter, while, typecheck, sort etc                        #
+# - Proper input evaluation                                       #
+# - Maybe make a codepage?                                        #
+# - Support 2 and more parameters in recursive function           #
+# - digits yield??                                                #
+#-------------</TO_DO>--------------------------------------------#
 
 import sys
 
@@ -12,7 +13,8 @@ sys.setrecursionlimit(1 << 30)
 
 values ={}
 for i in range(100):
-	values[i]=0
+	if i%2==0:values[i]=0
+	else:values[i]=1
 
 #--------------<Built-in Functions>--------------
 
@@ -58,6 +60,7 @@ reverse			= lambda x:x[::-1]
 stringReplace   = lambda a,x,b:x.replace(str(a),str(b))
 mapper			= lambda a,b:[interpret(b+'@'+str(i)) for i in a]
 getValue		= lambda a:a in values.keys() and values[a] or 0
+palindromizer   = lambda x:x[:-1]+x[::-1]
 
 def assign(a,b):
 	values[a]=b
@@ -117,6 +120,7 @@ dictionary={
 	'&':{'func':ander,'args':2},
 	'|':{'func':orer,'args':2},
 	'P':{'func':printer,'args':1},
+	'p':{'func':palindromizer,'args':1},
 	'B':{'func':ranger,'args':1},
 	'Q':{'func':splitter,'args':2},
 	'r':{'func':stringReplace,'args':3},
