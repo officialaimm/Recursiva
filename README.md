@@ -28,3 +28,6 @@ P is the operator that prints string following it.
 * [Challenge]
 
 [Home]: https://github.com/officialaimm/Recursiva/wiki/Home
+[Language Features]: https://github.com/officialaimm/Recursiva/wiki/Home
+[Operators]: https://github.com/officialaimm/Recursiva/wiki/Operators
+[Challenge]: https://github.com/officialaimm/Recursiva/wiki/Challenges
