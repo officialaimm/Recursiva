@@ -61,6 +61,7 @@ stringReplace   = lambda a,x,b:x.replace(str(a),str(b))
 mapper			= lambda a,b:[interpret(b+'@'+str(i)) for i in a]
 getValue		= lambda a:a in values.keys() and values[a] or 0
 palindromizer   = lambda x:x[:-1]+x[::-1]
+summer			= lambda x:sum(x)
 
 def assign(a,b):
 	values[a]=b
@@ -124,6 +125,7 @@ dictionary={
 	'm':{'func':mapper,'args':2},
 	'p':{'func':palindromizer,'args':1},
 	'r':{'func':stringReplace,'args':3},
+	's':{'func':summer,'args':1},
 	'w':{'func':whiler,'args':2},
 	'{':{'func':foreach,'args':2},
 	'|':{'func':orer,'args':2},
