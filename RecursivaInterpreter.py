@@ -5,6 +5,7 @@
 # - Maybe make a codepage?                                        #
 # - Support 2 and more parameters in recursive function           #
 # - digits yield??                                                #
+# - way to systematically allow multi-line execution              #
 #-------------</TO_DO>--------------------------------------------#
 
 import sys
