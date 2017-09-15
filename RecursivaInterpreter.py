@@ -5,6 +5,7 @@
 # - Maybe make a codepage?                                        #
 # - Support 2 and more parameters in recursive function           #
 # - digits yield??                                                #
+# - make variable assignment possible with reserved a,b,c,d,e,f   #
 # - way to systematically allow multi-line execution              #
 #-------------</TO_DO>--------------------------------------------#
 
