@@ -63,7 +63,10 @@ stringReplace   = lambda a,x,b:x.replace(str(a),str(b))
 mapper			= lambda a,b:[interpret(b+'@'+str(i)) for i in a]
 getValue		= lambda a:a in values.keys() and values[a] or 0
 palindromizer   = lambda x:x[:-1]+x[::-1]
+joinWithNothing = lambda x:''.join(x)
 summer			= lambda x:sum(x)
+def noOperation(x):
+	return 67
 
 def assign(a,b):
 	values[a]=b
@@ -83,6 +86,31 @@ def whiler(x,y):
 	while(interpret(x)):interpret(y)
 
 dictionary={
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
+	'':{'func':noOperation,'args':1},
 	'%':{'func':moder,'args':2},
 	'&':{'func':ander,'args':2},
 	'*':{'func':multiply,'args':2},
@@ -124,14 +152,36 @@ dictionary={
 	'_':{'func':reverse,'args':1},
 	"^":{'func':exponent,'args':2},
 	'`':{'func':assign,'args':2},
+	'a':{'func':noOperation,'args':2},
+	'b':{'func':noOperation,'args':2},
+	'c':{'func':noOperation,'args':2},
+	'd':{'func':noOperation,'args':2},
+	'e':{'func':noOperation,'args':2},
+	'f':{'func':noOperation,'args':2},
+	'g':{'func':noOperation,'args':2},
+	'h':{'func':noOperation,'args':2},
+	'i':{'func':noOperation,'args':2},
+	'j':{'func':joinWithNothing, 'args':1},
+	'k':{'func':noOperation,'args':2},
+	'l':{'func':noOperation,'args':2},
 	'm':{'func':mapper,'args':2},
+	'n':{'func':noOperation,'args':2},
+	'o':{'func':noOperation,'args':2},
 	'p':{'func':palindromizer,'args':1},
+	'q':{'func':noOperation,'args':2},
 	'r':{'func':stringReplace,'args':3},
 	's':{'func':summer,'args':1},
+	't':{'func':noOperation,'args':2},
+	'u':{'func':noOperation,'args':2},
+	'v':{'func':noOperation,'args':2},
 	'w':{'func':whiler,'args':2},
+	'x':{'func':noOperation,'args':2},
+	'y':{'func':noOperation,'args':2},
+	'z':{'func':noOperation,'args':2},
 	'{':{'func':foreach,'args':2},
 	'|':{'func':orer,'args':2},
 	'~':{'func':minusOne,'args':1},
+	'':{'func':minusOne,'args':1},
 }
 
 #--------------<Built-in Functions/>-------------
