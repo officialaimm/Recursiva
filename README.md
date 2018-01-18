@@ -18,7 +18,7 @@ This is the code that prints "Hello, World!" in Recursiva
 
     P"Hello, World!"
     
-P is the operator that prints string following it.
+P is the operator that prints the string following it.
 
 # Tutorials
 
