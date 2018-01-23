@@ -222,6 +222,7 @@ def tokenizer(statement):
 		else:
 			i+=1
 			tokens+=[token]
+	#print(tokens)
 	return tokens
 
 def evaluate(expression):
@@ -248,7 +249,7 @@ def function_interpret(function_statement):
 	function_statement=function_statement[::-1]
 	arguments_string = function_statement[:function_statement.find('@')][::-1]
 	function_string = function_statement[function_statement.find('@')+1:][::-1]
-	arguments = arguments_string.split()
+	arguments = tokenizer(arguments_string)
 	compiled = tokenizer(function_string)
 	alphas=[i for i in compiled if len(i)==1 and 'a'<=i<='f']
 	if alphas:
