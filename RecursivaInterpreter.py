@@ -65,6 +65,7 @@ getValue		= lambda a:a in values.keys() and values[a] or 0
 palindromizer   = lambda x:x[:-1]+x[::-1]
 joinWithNothing = lambda x:''.join(x)
 summer			= lambda x:sum(x)
+finder			= lambda x,y:y.index(x)
 
 def sorter(x,y):
 	return sorted(x,key=lambda z:interpret(y+"@"+str(z)))
@@ -173,7 +174,7 @@ dictionary={
 	'u':{'func':noOperation,'args':1},
 	'v':{'func':noOperation,'args':1},
 	'w':{'func':whiler,'args':2},
-	'x':{'func':noOperation,'args':1},
+	'x':{'func':finder,'args':2},
 	'y':{'func':noOperation,'args':1},
 	'z':{'func':noOperation,'args':1},
 	'{':{'func':foreach,'args':2},
