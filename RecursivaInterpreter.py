@@ -60,7 +60,7 @@ recursivaeval   = lambda x:interpret(x)
 stringin		= lambda x,y:y in x
 reverse			= lambda x:x[::-1]
 stringReplace   = lambda a,x,b:x.replace(str(a),str(b))
-mapper			= lambda a,b:[interpret(b+'@'+str(i)) for i in a]
+mapper			= lambda a,b:[type(i)==type('x') and interpret(b+'@\''+str(i)+'\'') or interpret(b+'@'+str(i)) for i in a]
 getValue		= lambda a:a in values.keys() and values[a] or 0
 palindromizer   = lambda x:x[:-1]+x[::-1]
 joinWithNothing = lambda x:''.join(x)
