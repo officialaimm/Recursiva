@@ -154,6 +154,9 @@ class OperatorTest(unittest.TestCase):
     def test_mapper(self):
         self.assertEqual(self.interpreter.interpret(
             "m [1,2,3,4]'Sa'"), [1, 4, 9, 16])
+        # mapper string bug
+        self.assertEqual(self.interpreter.interpret(
+            "m ['maya','tyui']'La'"), [4, 4])
 
     def test_getValue(self):
         self.interpreter.setValue(45, "grand")
@@ -212,14 +215,27 @@ class FeatureTest(unittest.TestCase):
         self.interpreter.resetMemory()
 
     def test_conditional(self):
-        self.assertEqual(self.interpreter.interpret("<a5:1!100@4"), 1)
-        self.assertEqual(self.interpreter.interpret("<a5:1!100@4"), 1)
+        self.assertEqual(self.interpreter.interpret("<4 5:1!100"), 1)
+        self.assertEqual(self.interpreter.interpret("<5 5:1!100"), 100)
+        # nested conditionals
+        self.assertEqual(self.interpreter.interpret(
+            ">a39:>a49:>a59:>a74:'dist'!'1st div'!'2nd div'!'3rd div'!'fail'@75"), 'dist')
+        self.assertEqual(self.interpreter.interpret(
+            ">a39:>a49:>a59:>a74:'dist'!'1st div'!'2nd div'!'3rd div'!'fail'@60"), '1st div')
+        self.assertEqual(self.interpreter.interpret(
+            ">a39:>a49:>a59:>a74:'dist'!'1st div'!'2ndF div'!'3rd div'!'fail'@50"), '2nd div')
+        self.assertEqual(self.interpreter.interpret(
+            ">a39:>a49:>a59:>a74:'dist'!'1st div'!'2nd div'!'3rd div'!'fail'@40"), '3rd div')
+        self.assertEqual(self.interpreter.interpret(
+            ">a39:>a49:>a59:>a74:'dist'!'1st div'!'2nd div'!'3rd div'!'fail'@39"), 'fail')
 
     def test_function(self):
         self.assertEqual(self.interpreter.interpret("++^a2^b2D*ab@4 5"), 81)
 
     def test_recursive_function(self):
         self.assertEqual(self.interpreter.interpret("=a1:1!+~Da#~a$@4"), 16)
+        # double params
+        self.assertEqual(self.interpreter.interpret("<a3:1!+#~a$#~~a$@10"), 55)
 
 
 class DocumentedTest(unittest.TestCase):
