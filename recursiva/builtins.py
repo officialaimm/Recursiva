@@ -22,7 +22,7 @@ def stringer(x):
     return type(x) == type('') and '"'+x+'"' or str(x)
 
 
-def piecefromlist(x, i):
+def getPiece(x, i):
     return x[i]
 
 
@@ -30,7 +30,7 @@ def listify(x):
     return [x]
 
 
-def slicefromLeft(x):
+def sliceFromLeft(x):
     return x[1:]
 
 
@@ -98,19 +98,19 @@ def length(x):
     return len(x)
 
 
-def slicestring(x, s, y):
+def slice(x, s, y):
     return s[x:y]
 
 
-def squareroot(x):
+def squareRoot(x):
     return x**.5
 
 
-def appendnewline(x):
+def appendNewLine(x):
     return x+'/n'
 
 
-def joinwithnewline(x):
+def joinWithNewLine(x):
     return '/n'.join(map(str, x))
 
 
@@ -134,19 +134,19 @@ def exponent(x, y):
     return x**y
 
 
-def pythoneval(x):
+def pythonEval(x):
     return eval(x)
 
 
-def pythonexec(x):
+def pythonExec(x):
     return exec(x)
 
 
-def recursivaeval(x, interpreter):
+def recursivaEval(x, interpreter):
     return interpreter.interpret(x)
 
 
-def stringin(x, y):
+def isIn(x, y):
     return y in x
 
 
@@ -203,7 +203,7 @@ def lowerAlphabet():
     return'abcdefghijklmnopqrstuvwxyz'
 
 
-def foreach(x, y, interpreter):
+def forEach(x, y, interpreter):
     for i in x:
         if type(x) == type('f'):
             interpreter.interpret(y.replace('}', '"'+str(i)+'"'))

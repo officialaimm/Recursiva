@@ -31,14 +31,16 @@ class OperatorTest(unittest.TestCase):
     def test_stringer(self):
         self.assertEqual(self.interpreter.interpret("V 78"), "78")
 
-    def test_piecefromlist(self):
+    def test_getPiece(self):
         self.assertEqual(self.interpreter.interpret("Y [1,5,6,15,5] 3"), 15)
+        self.assertEqual(self.interpreter.interpret("Y 'testing' 3"), 't')
 
     def test_listify(self):
         self.assertEqual(self.interpreter.interpret("A 45"), [45])
 
-    def test_slicefromLeft(self):
+    def test_sliceFromLeft(self):
         self.assertEqual(self.interpreter.interpret("T [4,56,6]"), [56, 6])
+        self.assertEqual(self.interpreter.interpret("T 'manna'"), 'anna')
 
     def test_integerer(self):
         self.assertEqual(self.interpreter.interpret("I 89.99"), 89)
@@ -92,17 +94,19 @@ class OperatorTest(unittest.TestCase):
     def test_length(self):
         self.assertEqual(self.interpreter.interpret("L [6,7,8]"), 3)
 
-    def test_slicestring(self):
+    def test_slice(self):
         self.assertEqual(self.interpreter.interpret(
             "Z 4 'mandirabedi' 7"), "ira")
+        self.assertEqual(self.interpreter.interpret(
+            "Z4['m','an','dira',5,6,8,'bedi']7"), [6, 8, 'bedi'])
 
-    def test_squareroot(self):
+    def test_squareRoot(self):
         self.assertEqual(self.interpreter.interpret("R 9"), 3)
 
-    def test_appendnewline(self):
+    def test_appendNewLine(self):
         self.assertEqual(self.interpreter.interpret("G \"old\""), "old/n")
 
-    def test_joinwithnewline(self):
+    def test_joinWithNewLine(self):
         self.assertEqual(self.interpreter.interpret(
             "E ['the','blojj','spills']"), "the/nblojj/nspills")
 
@@ -124,19 +128,21 @@ class OperatorTest(unittest.TestCase):
     def test_exponent(self):
         self.assertEqual(self.interpreter.interpret("^ 2 6"), 64)
 
-    def test_pythoneval(self):
+    def test_pythonEval(self):
         self.assertEqual(self.interpreter.interpret("U '7**2'"), 49)
 
-    def test_pythonexec(self):
+    def test_pythonExec(self):
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
             self.interpreter.interpret("K 'print(45)'")
             self.assertEqual(fakeOutput.getvalue(), '45\n')
 
-    def test_recursivaeval(self):
+    def test_recursivaEval(self):
         self.assertEqual(self.interpreter.interpret("M '+*8 9 5'"), 77)
 
-    def test_stringin(self):
+    def test_isIn(self):
         self.assertEqual(self.interpreter.interpret("N 'women' 'men'"), True)
+        self.assertEqual(self.interpreter.interpret(
+            "N ['wo','men'] 'men'"), True)
 
     def test_reverse(self):
         self.assertEqual(self.interpreter.interpret("_ 'murder'"), 'redrum')
@@ -185,7 +191,7 @@ class OperatorTest(unittest.TestCase):
         self.assertEqual(self.interpreter.interpret(")"),
                          "abcdefghijklmnopqrstuvwxyz")
 
-    def test_foreach(self):
+    def test_forEach(self):
         with patch('sys.stdout', new=StringIO()) as fakeOutput:
             self.interpreter.interpret("{B3 'P\"hegde\"'")
             self.assertEqual(fakeOutput.getvalue(), 'hegde\nhegde\nhegde\n')
